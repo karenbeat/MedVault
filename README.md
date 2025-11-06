@@ -252,6 +252,6 @@ Ao garantir que **os pacientes controlem seus dados**, **as instituições asseg
 
 ### 👩‍💻 Autora  
 **Karen Beatrice Souza Gonçalves**  
-*EmbarcaTech — Universidade de Brasília (UnB)*  
+* Universidade de Brasília (UnB)*  
 📧 karennbsg@gmail.com  
 🌐 [CESS Network](https://cess.cloud) | [GitHub](https://github.com/karenbeat)
