@@ -121,39 +121,137 @@ By ensuring that **patients control their data**, **institutions ensure transpar
 
 ---
 
-## **Versão em Português**
-
-### 🩺 MedVault — Plataforma Descentralizada para Armazenamento e Compartilhamento Seguro de Dados Médicos  
-
-**MedVault** é uma aplicação descentralizada (**DApp**) construída sobre a **CESS Network**, com o propósito de **revolucionar o armazenamento e o compartilhamento de dados médicos**.  
-Através de tecnologias como **DeOSS**, **PReT**, **PoDR²** e **MDRC**, o projeto devolve ao paciente **a soberania sobre suas informações** e consolida a **CESS** como base da confiança digital na saúde global.  
-
-#### 🎯 Objetivos  
-- Implementar contratos inteligentes em Solidity  
-- Integrar DeOSS como camada principal de armazenamento  
-- Utilizar PReT para compartilhamento seguro  
-- Aplicar PoDR² e PoE para garantir autenticidade  
-- Criar interface React + MetaMask  
-- Demonstrar a CESS como infraestrutura global confiável  
-
-#### ⚙️ Arquitetura  
-- **Armazenamento (DeOSS)**: dados fragmentados e criptografados  
-- **Contratos (Solidity)**: controle de acesso e auditoria  
-- **Aplicação (React + Ethers.js)**: interface simples e intuitiva  
-- **Compartilhamento (PReT)**: acesso temporário sem expor chaves  
-- **Criptografia (AES/RSA)**: segurança total dos arquivos  
-
-#### 🚀 Impacto  
-O **MedVault** mostra que a **CESS** é mais que tecnologia — é um **pilar ético e social da Web3**, promovendo um futuro onde **privacidade, transparência e soberania digital** são inegociáveis.  
-
-> 🩵 “Com o MedVault, a CESS se torna a base da confiança digital — um futuro onde a privacidade é um direito, não um privilégio.”  
-
----
-
 ### 👩‍💻 Author  
 **Karen Beatrice Souza Gonçalves**  
-*Universidade de Brasília (UnB)*  
+*University of Brasília (UnB)*  
 📧 karennbsg@gmail.com  
 🌐 [CESS Network](https://cess.cloud) | [GitHub](https://github.com/karenbeat)
 
+## 🇧🇷 Translation — **Versão em Português**
+# 🩺 MedVault — Plataforma Descentralizada para Armazenamento e Compartilhamento Seguro de Dados Médicos  
+
+> *“Por meio do MedVault, a CESS Network prova que o armazenamento descentralizado não é apenas uma evolução tecnológica, mas um imperativo moral — a base para um mundo onde a confiança digital e a privacidade na saúde são garantidas.”*  
+
 ---
+
+## 🌍 Visão Geral  
+
+O **MedVault** é uma aplicação descentralizada (**DApp**) construída sobre a **CESS Network**, projetada para revolucionar a forma como dados médicos são **armazenados, compartilhados e protegidos**.  
+Integrando **DeOSS**, **Proxy Re-Encryption (PReT)**, **Proof of Data Reduplication and Recovery (PoDR²)** e **Multi-format Data Rights Confirmation (MDRC)**, o projeto cria um ambiente seguro e ético onde **os pacientes recuperam total soberania sobre seus dados de saúde digitais**.
+
+> 🧬 *Este projeto posiciona a CESS Network como a espinha dorsal de um novo padrão global em infraestrutura de saúde digital.*
+
+---
+
+## 💡 Motivação  
+
+O setor da saúde continua sendo o **mais vulnerável a violações de dados**.  
+De acordo com o **Relatório de Cibersegurança da IBM (2024)**, registros médicos são até **20 vezes mais valiosos** do que dados financeiros no mercado ilegal.  
+
+Escândalos como o **Project Nightingale (Google)** expuseram os perigos de sistemas centralizados — onde milhões de registros de pacientes foram acessados sem consentimento.  
+
+O **MedVault** surge como uma resposta ética e tecnológica, construído sobre a **CESS Network** para garantir:
+- Integridade descentralizada  
+- Confidencialidade dos dados  
+- Transparência por meio de provas on-chain  
+
+---
+
+## 🎯 Objetivos  
+
+### **Objetivo Geral**  
+Desenvolver um sistema descentralizado utilizando a **CESS Network** para garantir o **armazenamento seguro e o compartilhamento controlado de registros médicos** através de **smart contracts**.  
+
+### **Objetivos Específicos**  
+- 🧱 Implementar contratos inteligentes em **Solidity** para controle de acesso e auditoria  
+- ☁️ Integrar o **CESS DeOSS** como camada de armazenamento distribuído  
+- 🔐 Aplicar **Proxy Re-Encryption (PReT)** para compartilhamento seguro sem troca de chaves  
+- 🧾 Utilizar **PoDR²** e **Proof of Existence (PoE)** para validação de integridade  
+- 💻 Criar uma interface web intuitiva com **React + MetaMask**  
+- 🌐 Destacar a **CESS Network** como uma **infraestrutura de confiança para dados sensíveis**  
+
+---
+
+## ⚙️ Arquitetura Técnica  
+
+### 🗄️ **1. Camada de Armazenamento — CESS DeOSS**
+Os arquivos médicos criptografados são armazenados no **DeOSS da CESS**, que garante replicação, redundância e resiliência, eliminando pontos únicos de falha.  
+
+### 🔗 **2. Camada de Contrato Inteligente — Solidity / EVM**
+Cada ação (upload, concessão, acesso) é registrada na blockchain, criando **provas públicas verificáveis** sem expor dados pessoais.  
+
+### 💻 **3. Camada de Aplicação — React + Ethers.js**
+Interface intuitiva que permite aos pacientes e profissionais:
+- Fazer upload de arquivos médicos criptografados  
+- Conceder ou revogar acessos temporários (ex.: 48h)  
+- Visualizar registros de auditoria imutáveis  
+
+### 🔐 **4. Compartilhamento Seguro — Proxy Re-Encryption (PReT)**
+Permite acesso delegado e temporário **sem expor chaves privadas**.  
+
+### 🧩 **5. Criptografia e Controle de Acesso**
+- Criptografia híbrida AES/RSA  
+- Modelo ABAC (Controle de Acesso Baseado em Atributos)  
+- Logs transparentes e auditáveis  
+
+---
+
+## 🚀 Inovação e Impacto  
+
+**O MedVault transforma a CESS de um sistema de armazenamento em uma infraestrutura global de confiança.**  
+Ele demonstra que descentralização e ética podem coexistir, garantindo aos usuários **privacidade, transparência e soberania**.  
+
+### 🧠 Benefícios Técnicos  
+- Elimina vulnerabilidades centralizadas  
+- Garante auditoria verificável  
+- Assegura autonomia do paciente  
+- Permite interoperabilidade entre instituições  
+- Oferece recuperação confiável com PoDR²  
+
+### 🌎 Benefícios Estratégicos para a CESS Network  
+- 🚀 Demonstração prática das capacidades da CESS  
+- 🌍 Maior visibilidade nos mercados globais de saúde  
+- 🤝 Potencial de parcerias com hospitais e governos  
+- 🧭 Reforço da reputação da CESS como infraestrutura ética, segura e inovadora  
+
+---
+
+## 🗓️ Cronograma do Projeto  
+
+| **Etapa** | **Descrição** | **Período** |
+|------------|----------------|-------------|
+| 1️⃣ | Pesquisa e análise de casos — vulnerabilidades e infraestrutura da CESS Network | ✅ Concluída |
+| 2️⃣ | Desenvolvimento dos contratos inteligentes (Solidity) para controle e auditoria | 10/10 – 14/10 |
+| 3️⃣ | Integração com DeOSS e PoE para verificação descentralizada | 15/10 – 20/10 |
+| 4️⃣ | Interface web e módulo de criptografia AES/RSA (React + Ethers.js) | 21/10 – 26/10 |
+| 5️⃣ | Testes funcionais, documentação e entrega final | 28/10 – 06/11 |
+
+---
+
+## 🧬 Visão e Conclusão  
+
+**O MedVault coloca a CESS Network no centro da revolução da confiança digital.**  
+Ele vai além do âmbito acadêmico, servindo como modelo para uma governança descentralizada da saúde.  
+
+Ao garantir que **os pacientes controlem seus dados**, **as instituições assegurem transparência**, e **a CESS garanta confiabilidade**, o projeto define um novo paradigma de **ética e segurança na saúde digital**.  
+
+> 🩵 *O MedVault não é apenas uma DApp — é uma declaração de que a privacidade dos dados é um direito humano, impulsionado pela CESS.*
+
+---
+
+## 📚 Referências  
+
+- Identity Management Institute. *Blockchain for Healthcare Data Security.* 2024.  
+- IBM Security Report. *Cost of a Data Breach.* 2024.  
+- Project Nightingale — *Google & Ascension Case.* 2024.  
+- SpringerLink. *Hybrid Blockchain Models for Health Data Privacy.* 2024.  
+- Nature Scientific Reports. *Blockchain Applications in Healthcare.* 2025.  
+- STL Partners. *Blockchain Use Cases in Digital Health.* 2024.  
+
+---
+
+### 👩‍💻 Autora  
+**Karen Beatrice Souza Gonçalves**  
+*EmbarcaTech — Universidade de Brasília (UnB)*  
+📧 karennbsg@gmail.com  
+🌐 [CESS Network](https://cess.cloud) | [GitHub](https://github.com/karenbeat)
