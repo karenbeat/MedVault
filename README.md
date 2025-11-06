@@ -1,5 +1,5 @@
-#🩺 MedVault — Decentralized Platform for Secure Medical Data Storage and Sharing#
-🌍 Overview
+#🩺 MedVault — Decentralized Platform for Secure Medical Data Storage and Sharing
+🌍 Overview#
 
 MedVault is a decentralized application (DApp) built on the CESS Network, designed to revolutionize how medical data is stored, shared, and protected. By leveraging CESS’s advanced decentralized infrastructure — including DeOSS, Proxy Re-Encryption (PReT), Proof of Data Reduplication and Recovery (PoDR²), and Multi-format Data Rights Confirmation (MDRC) — MedVault creates a trusted environment where patients regain full control over their digital health data.
 
