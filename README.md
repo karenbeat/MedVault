@@ -1,7 +1,8 @@
 # 🩺 MedVault — Decentralized Platform for Secure Medical Data Storage and Sharing  
 
 > *"Through MedVault, the CESS Network proves that decentralized storage is not just a technological evolution, but a moral imperative — the foundation for a world where digital trust and privacy in healthcare are guaranteed."*  
-<img width="497" height="392" alt="logo 1 " src="https://github.com/user-attachments/assets/fd8f6d59-45cc-40ed-b412-b4b40685b618" />
+<img width="1280" height="1010" alt="logo 1 " src="https://github.com/user-attachments/assets/e832e085-ec30-4b10-b425-5956b5113cd7" />
+
 
 
 ---
