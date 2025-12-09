@@ -1,254 +1,326 @@
-MedVault — Decentralized Platform for Secure Medical Data Storage and Controlled Sharing
+# MedVault — Decentralized Platform for Secure Medical Data Storage and Controlled Sharing
 
-“MedVault demonstrates that decentralized storage is not merely a technological advancement, but a structural requirement for a future in which digital trust and privacy in healthcare are fundamentally protected.”
+> “MedVault demonstrates that decentralized storage is not merely a technological advancement, but a structural requirement for a future in which digital trust and privacy in healthcare are fundamentally protected.”
 
-Overview
+---
 
-MedVault is a decentralized application (DApp) built on the CESS Network, designed to redefine the storage, management, and sharing of sensitive medical data. The system leverages CESS technologies such as the Decentralized Object Storage System (DeOSS), Proxy Re-Encryption (PReT), Proof of Data Reduplication and Recovery (PoDR²), Proof of Existence (PoE), and Multi-format Data Rights Confirmation (MDRC) to guarantee data integrity, confidentiality, auditability, and high availability.
+## Overview
 
-The platform provides patients with full sovereignty over their medical records while enabling secure, transparent, and revocable data sharing with healthcare professionals. MedVault positions the CESS Network as a foundational trust layer for emerging digital health infrastructures around the world.
+MedVault is a decentralized application (DApp) built on the CESS Network, developed to redefine how sensitive medical data is stored, managed, and shared.  
+The system leverages essential CESS components such as:
 
-Motivation
+- DeOSS (Decentralized Object Storage System)
+- Proxy Re-Encryption (PReT)
+- Proof of Data Reduplication and Recovery (PoDR²)
+- Proof of Existence (PoE)
+- Multi-format Data Rights Confirmation (MDRC)
 
-Healthcare is consistently ranked as the most targeted and vulnerable sector for data breaches. According to IBM’s Cybersecurity Report (2024), medical records can be up to twenty times more valuable on the black market than financial data. Centralized electronic health record systems have repeatedly demonstrated structural weaknesses, as exemplified by Google and Ascension’s Project Nightingale, where millions of confidential records were accessed without patient consent.
+Together, these technologies ensure confidentiality, integrity, transparency, and long-term reliability for medical data.
 
-MedVault is conceived as a response to these ethical, technical, and privacy challenges. By using the CESS Network as its core infrastructure, MedVault ensures:
+MedVault empowers patients with complete sovereignty over their health records while enabling secure and revocable sharing with healthcare professionals.
 
-Decentralized and tamper-resistant storage of medical files
+---
 
-End-to-end confidentiality through encryption and PReT-based delegated access
+## Motivation
 
-Transparent auditability using blockchain logs
+Healthcare is one of the most vulnerable sectors concerning data breaches.  
+IBM's Cybersecurity Report (2024) states that medical data can be up to **20 times more valuable** than financial information on the black market.
 
-Elimination of trust in centralized intermediaries
+High-profile incidents such as **Project Nightingale** exposed structural flaws in centralized systems, where millions of patient records were accessed without explicit consent.
 
-Objectives
-General Objective
+MedVault addresses these ethical and technical failures by leveraging the CESS Network to guarantee:
 
-Develop a decentralized system based on the CESS Network that provides secure storage, controlled access, and verifiable auditing of medical records through smart contracts and decentralized storage mechanisms.
+- Decentralized and tamper-proof data storage  
+- End-to-end confidentiality via encryption and delegated cryptographic access  
+- Transparent on-chain auditability  
+- Removal of single points of failure  
 
-Specific Objectives
+---
 
-Implement smart contracts in Solidity for ownership validation, permission management, and access auditing
+## Objectives
 
-Integrate CESS DeOSS as the distributed file storage layer
+### General Objective
+Develop a decentralized system using the CESS Network to provide secure storage, controlled access, and verifiable auditing of medical files through smart contracts and distributed storage.
 
-Apply Proxy Re-Encryption (PReT) to enable secure delegated access without exposing private keys
+### Specific Objectives
+- Implement Solidity smart contracts for ownership, permissions, and auditing  
+- Integrate CESS DeOSS as the decentralized storage layer  
+- Apply Proxy Re-Encryption (PReT) for secure delegated access  
+- Utilize PoDR² and PoE for integrity and redundancy verification  
+- Build a React-based front-end with MetaMask authentication  
+- Demonstrate CESS Network as an ethical trust infrastructure for sensitive data  
 
-Utilize PoDR² and PoE for integrity verification and redundancy auditing
+---
 
-Develop a user-friendly front-end using React and MetaMask wallet authentication
+# Front-End Architecture and Functionality
 
-Demonstrate CESS Network as a scalable trust infrastructure for highly sensitive data
+The front-end acts as a decentralized interface interacting with both the MedVault smart contract and the CESS DeOSS gateway. It was designed to ensure user sovereignty, transparency, and security.
 
-Technical Architecture
-1. Storage Layer — CESS DeOSS
+## Technologies Used (Front-End)
+- **Next.js / React**
+- **TypeScript**
+- **Ethers.js**
+- **MetaMask Wallet Integration**
+- **REST API Requests to DeOSS**
 
-Encrypted medical files are stored within CESS’s decentralized object storage network. DeOSS automatically handles file sharding, replication, redundancy, geographic distribution, and long-term recoverability, ensuring reliability without dependency on centralized servers.
+## Core Functionalities (Front-End)
 
-2. Smart Contract Layer — Solidity / EVM
+### 1. Wallet Connection and Authentication
+- The user connects via MetaMask.
+- The wallet address is used to identify all previously uploaded files.
+- All authentication is cryptographic; no centralized login exists.
 
-Smart contracts maintain immutable logs of file registration, access grants, revocations, and audit events. No medical data is stored on-chain; instead, the blockchain preserves metadata, permission rules, and cryptographic proofs.
+### 2. File Upload to CESS DeOSS
+- The user selects a file.
+- The front-end sends it to DeOSS via `PUT /file`.
+- Mandatory headers: `Territory`, `Account`, `Message`, `Signature`.
 
-3. Application Layer — React and Ethers.js
+DeOSS responds with a unique **FID (File Identifier)**.
 
-The web interface enables patients and authorized professionals to:
+### 3. Smart Contract Registration
+The front-end:
+- Computes a file hash (SHA-256)
+- Calls the contract to register:
+  - fileHash  
+  - deossCID (FID)  
+  - timestamp  
+  - wallet address  
 
-Upload encrypted medical records through the DeOSS gateway
+### 4. Dashboard and File Management
+- Displays the list of files owned by the connected wallet.
+- Retrieves metadata directly from the smart contract.
+- Allows file download from DeOSS.
 
-Retrieve previously stored files associated with a connected wallet
+### 5. Access Control UI
+- Users select a file, choose a doctor’s wallet address, and set expiration.
+- Calls `grantAccess` on the smart contract.
 
-Grant or revoke temporary access
+### 6. Audit Log Visualization
+Listens to contract events:
+- `FileUploaded`
+- `AccessGranted`
+- `FileAccessed`
 
-View audit logs generated from on-chain events
+Displayed as an immutable timeline.
 
-4. Secure Delegated Sharing — Proxy Re-Encryption (PReT)
+### Front-End Security Principles
+- No sensitive data is stored locally.
+- All cryptographic operations run inside MetaMask.
+- Optional AES/RSA encryption may occur client-side.
 
-The system introduces delegated authorization using cryptographic transformations, allowing users to provide temporary access to a file without sharing their private keys or revealing plaintext data.
+---
 
-5. Cryptography and Access Control
+# Back-End Architecture and Functionality
 
-Hybrid AES/RSA encryption for data confidentiality
+MedVault adopts a decentralized back-end model composed of:
 
-Attribute-Based Access Control (ABAC) for permission modeling
+1. The **MedVault Smart Contract** (on-chain logic)  
+2. The **CESS DeOSS Gateway** (off-chain encrypted storage)  
 
-Transparent audit trails for accountability without privacy loss
+No centralized server is required.
 
-Innovation and Impact
+---
 
-MedVault demonstrates how CESS can operate not only as a decentralized storage service, but as a trust infrastructure for global digital health systems. It shows that ethical data management can coexist with scalability, transparency, and interoperability.
+## 1. Smart Contract Back-End (EVM-Based)
 
-Technical Benefits
+### Technologies
+- Solidity 0.8.x  
+- Sepolia Testnet  
+- Blockchain event logging  
 
-Elimination of centralized points of failure
+### Key Smart Contract Functions
+- **uploadFile(fileHash, deossCID)** – Registers file metadata  
+- **grantAccess(fileHash, doctor, expiration)** – Grants temporary access  
+- **revokeAccess(fileHash, doctor)** – Revokes permissions  
+- **hasAccess(fileHash, user)** – Validates user permissions  
+- **recordAccess(fileHash)** – Records audit trail events  
+- **verifyOwner(fileHash)** – Confirms file ownership  
 
-Verifiable, tamper-proof audit logs
+### Decentralization Advantages
+- Immutable audit history  
+- No dependence on centralized authentication  
+- Transparent and verifiable interactions  
+- Eliminates trust requirements between participants  
 
-Empowerment of patient autonomy and data ownership
+---
 
-Interoperability across healthcare institutions
+## 2. CESS DeOSS Storage Back-End
 
-High availability and resilient recovery backed by PoDR²
+Responsible for storing encrypted medical data.
 
-Strategic Benefits for CESS Network
+### Technologies
+- CESS DeOSS (v0.4+)  
+- REST API communication  
+- Territory authorization system  
+- Gateway signature authentication  
 
-Practical demonstration of real-world use cases
+### Core Functionalities (DeOSS)
+- Upload: `PUT /file`  
+- Download: `GET /file/download/<fid>`  
+- Metadata: `GET /file/metadata/<fid>`  
+- Deletion: `DELETE /file/<fid>`  
 
-Increased visibility in the global digital health ecosystem
+### Resilience and Redundancy
+- Geographic replication  
+- Fragmentation and deduplication  
+- PoDR²-based recovery  
+- Anti-tampering integrity via PoE  
 
-Potential partnerships with medical institutions and academic researchers
+---
 
-Reinforcement of CESS as a leader in privacy-centric Web3 infrastructure
+# Interaction Model: Front-End × Smart Contract × DeOSS
 
-Project Timeline
-Stage	Description	Period
-1	Research and analysis of vulnerabilities; review of CESS Network architecture	Completed
-2	Development of Solidity smart contracts for access control and auditing	Oct 10 – Oct 14
-3	Integration with DeOSS and PoE for decentralized verification	Oct 15 – Oct 20
-4	Development of React interface and AES/RSA encryption components	Oct 21 – Oct 26
-5	Functional testing, documentation, and final submission	Oct 28 – Nov 6
-Conclusion
+| Function | Front-End | Smart Contract | DeOSS |
+|---------|-----------|----------------|--------|
+| Upload | Sends file; computes hash | Stores metadata | Stores file |
+| Download | Requests file | Validates permissions | Returns encrypted file |
+| Access Control | UI for sharing rules | Stores access rights | Enforces access |
+| Audit | Displays logs | Emits events | — |
+| Authentication | MetaMask signature | Verifies msg.sender | Requires signed headers |
 
-MedVault positions the CESS Network at the center of a new paradigm of trust, transparency, and privacy in healthcare. Beyond its academic scope, the project illustrates how decentralized technologies can support ethical data governance, enabling individuals to control their personal information while ensuring institutional accountability.
+This architecture ensures a fully decentralized trust model built upon transparency, cryptographic verification, and distributed storage.
 
-MedVault embodies the principle that digital privacy is a fundamental right and that decentralized infrastructures such as CESS are essential to safeguard this right in modern healthcare systems.
+---
 
-References
+# Project Timeline
 
-Identity Management Institute. Blockchain for Healthcare Data Security, 2024.
+| Stage | Description | Period |
+|-------|-------------|--------|
+| 1 | Research and analysis; CESS infrastructure study | Completed |
+| 2 | Smart contract development | Oct 10 – Oct 14 |
+| 3 | DeOSS and PoE integration | Oct 15 – Oct 20 |
+| 4 | React interface and cryptography module | Oct 21 – Oct 26 |
+| 5 | Testing, documentation, final submission | Oct 28 – Nov 6 |
 
-IBM Security. Cost of a Data Breach Report, 2024.
+---
 
-Google & Ascension. Project Nightingale Case Study, 2024.
+# Conclusion
 
-SpringerLink. Hybrid Blockchain Models for Health Data Privacy, 2024.
+MedVault positions the CESS Network at the forefront of digital trust and decentralized health data governance.  
+The project demonstrates that:
 
-Nature Scientific Reports. Blockchain Applications in Healthcare, 2025.
+- privacy is a fundamental right,  
+- decentralization is essential for medical ethics,  
+- and CESS provides the infrastructure required for secure, transparent, and resilient data systems.
 
-STL Partners. Blockchain Use Cases in Digital Health, 2024.
+MedVault establishes a blueprint for future healthcare applications built on Web3 principles.
 
-Versão em Português (Tradução Profissional)
-MedVault — Plataforma Descentralizada para Armazenamento e Compartilhamento Seguro de Dados Médicos
+---
 
-“O MedVault demonstra que o armazenamento descentralizado não é apenas um avanço tecnológico, mas um requisito estrutural para um futuro no qual a confiança digital e a privacidade na saúde sejam efetivamente protegidas.”
+# References
 
-Visão Geral
+- Identity Management Institute. *Blockchain for Healthcare Data Security*, 2024.  
+- IBM Security. *Cost of a Data Breach Report*, 2024.  
+- Google & Ascension. *Project Nightingale Case Study*, 2024.  
+- SpringerLink. *Hybrid Blockchain Models for Health Data Privacy*, 2024.  
+- Nature Scientific Reports. *Blockchain Applications in Healthcare*, 2025.  
+- STL Partners. *Blockchain Use Cases in Digital Health*, 2024.  
 
-O MedVault é uma aplicação descentralizada construída sobre a CESS Network, desenvolvida para redefinir a forma como dados médicos sensíveis são armazenados, gerenciados e compartilhados. O sistema utiliza tecnologias da CESS, como DeOSS, Proxy Re-Encryption (PReT), Proof of Data Reduplication and Recovery (PoDR²), Proof of Existence (PoE) e MDRC, para garantir integridade, confidencialidade, auditabilidade e alta disponibilidade.
+---
 
-A plataforma devolve ao paciente a soberania sobre seus registros médicos e permite o compartilhamento seguro, transparente e revogável dessas informações com profissionais de saúde. O MedVault posiciona a CESS Network como uma camada essencial de confiança para infraestruturas de saúde digital ao redor do mundo.
+# Portuguese Translation — Versão Profissional
 
-Motivação
+## Visão Geral
 
-O setor da saúde é historicamente o mais vulnerável a violações de dados. Segundo o Relatório de Cibersegurança da IBM (2024), registros médicos podem valer até vinte vezes mais que dados financeiros no mercado ilegal. Sistemas centralizados demonstraram repetidamente falhas estruturais, como no caso do Project Nightingale, onde milhões de registros foram acessados sem consentimento.
+O MedVault é uma aplicação descentralizada construída na CESS Network para redefinir o armazenamento, o gerenciamento e o compartilhamento de dados médicos sensíveis. O projeto utiliza os principais mecanismos da CESS — DeOSS, PReT, PoDR², PoE e MDRC — para garantir integridade, segurança e governança transparente.
 
-O MedVault surge como resposta a esses desafios éticos e tecnológicos, garantindo:
+O sistema devolve ao paciente o controle total de seus dados, permitindo compartilhamento seguro e revogável com profissionais de saúde.
 
-Armazenamento descentralizado e à prova de adulterações
+---
 
-Confidencialidade completa com criptografia e acesso delegado
+## Motivação
 
-Auditoria transparente por meio de registros em blockchain
+O setor de saúde apresenta índices críticos de violações de dados.  
+Registros médicos são extremamente valiosos e frequentemente alvo de ataques.  
+Casos como o Project Nightingale evidenciam riscos estruturais de sistemas centralizados.
 
-Eliminação da dependência de intermediários centralizados
+O MedVault utiliza a CESS Network para garantir:
 
-Objetivos
-Objetivo Geral
+- Armazenamento descentralizado e imutável  
+- Confidencialidade por criptografia  
+- Auditoria transparente  
+- Eliminação de intermediários centralizados  
 
-Desenvolver um sistema descentralizado baseado na CESS Network que forneça armazenamento seguro, acesso controlado e auditoria verificável de registros médicos por meio de contratos inteligentes e armazenamento distribuído.
+---
 
-Objetivos Específicos
+## Objetivos
 
-Implementar contratos inteligentes em Solidity para validação de propriedade, permissões e auditoria
+### Objetivo Geral
+Desenvolver um sistema descentralizado baseado na CESS Network para garantir armazenamento seguro e compartilhamento controlado de arquivos médicos.
 
-Integrar o DeOSS como camada principal de armazenamento distribuído
+### Objetivos Específicos
+- Criar contratos inteligentes em Solidity  
+- Integrar o DeOSS como camada de armazenamento  
+- Implementar PReT para acesso delegado  
+- Utilizar PoDR² e PoE  
+- Construir interface React com MetaMask  
+- Demonstrar a CESS como infraestrutura de confiança  
 
-Utilizar Proxy Re-Encryption (PReT) para acesso delegado seguro
+---
 
-Empregar PoDR² e PoE para validação de integridade
+# Arquitetura e Funcionamento do Front-End
 
-Criar uma interface web intuitiva com React e autenticação via MetaMask
+O front-end funciona como uma interface descentralizada que interage diretamente com o DeOSS e com o contrato inteligente.
 
-Demonstrar o potencial da CESS Network como infraestrutura para dados sensíveis
+## Tecnologias
+- Next.js / React  
+- TypeScript  
+- Ethers.js  
+- MetaMask  
+- REST para DeOSS
 
-Arquitetura Técnica
-1. Camada de Armazenamento — CESS DeOSS
+## Funcionalidades
+- Autenticação via MetaMask  
+- Upload de arquivos ao DeOSS  
+- Registro on-chain dos metadados  
+- Dashboard de arquivos  
+- Controle de acesso  
+- Exibição de logs de auditoria  
 
-Arquivos médicos criptografados são armazenados no DeOSS, que realiza fragmentação, replicação e distribuição geográfica dos dados, garantindo disponibilidade e resiliência.
+---
 
-2. Camada de Contrato Inteligente — Solidity / EVM
+# Arquitetura e Funcionamento do Back-End
 
-Os contratos registram ações como upload, concessão e acesso, criando provas imutáveis sem armazenar dados médicos na blockchain.
+O back-end é descentralizado e dividido em duas partes: contrato inteligente e DeOSS.
 
-3. Camada de Aplicação — React e Ethers.js
+## 1. Contrato Inteligente
+- Registro de arquivos  
+- Controle de permissões  
+- Auditoria via eventos  
+- Validação de proprietário  
 
-A interface permite:
+## 2. DeOSS
+- Upload, download e metadados  
+- Assinatura e autorização via cabeçalhos  
+- Replicação, deduplicação e PoDR²  
+- Integridade via PoE  
 
-Upload de arquivos criptografados
+---
 
-Recuperação de itens associados à carteira conectada
+# Modelo de Interação
 
-Concessão e revogação de acessos temporários
+| Ação | Front-End | Smart Contract | DeOSS |
+|------|-----------|----------------|--------|
+| Upload | Envia arquivo | Registra metadados | Armazena arquivo |
+| Download | Solicita | Valida permissão | Entrega arquivo |
+| Permissões | UI | Lógica de acesso | — |
+| Auditoria | Exibe | Gera eventos | — |
 
-Consulta de registros de auditoria
+---
 
-4. Compartilhamento Delegado — Proxy Re-Encryption (PReT)
+# Cronograma
 
-Permite acesso temporário e seguro sem exposição de chaves privadas.
+(igual à versão em inglês)
 
-5. Criptografia e Controle de Acesso
+---
 
-Criptografia híbrida AES/RSA
+# Conclusão
 
-Controle de acesso baseado em atributos (ABAC)
+O MedVault estabelece um novo paradigma de governança para dados médicos, demonstrando que a descentralização é essencial para segurança, transparência e ética digital.
 
-Trilhas de auditoria transparentes
+---
 
-Inovação e Impacto
-
-O MedVault estabelece a CESS como mais do que um sistema de armazenamento, mas como um pilar de confiança para a saúde digital. Demonstra que descentralização, ética e escalabilidade são compatíveis.
-
-Benefícios Técnicos
-
-Eliminação de pontos únicos de falha
-
-Trilhas de auditoria imutáveis
-
-Autonomia total do paciente
-
-Interoperabilidade institucional
-
-Recuperação confiável por meio do PoDR²
-
-Benefícios Estratégicos para a CESS Network
-
-Demonstração de caso real de aplicação
-
-Maior visibilidade no ecossistema global de saúde digital
-
-Possibilidade de parcerias com instituições médicas
-
-Consolidação da CESS como infraestrutura ética e segura
-
-Cronograma do Projeto
-Etapa	Descrição	Período
-1	Pesquisa e análise de vulnerabilidades; arquitetura da CESS Network	Concluída
-2	Desenvolvimento de contratos inteligentes	10/10 – 14/10
-3	Integração com DeOSS e PoE	15/10 – 20/10
-4	Interface React e módulos criptográficos	21/10 – 26/10
-5	Testes, documentação e entrega final	28/10 – 06/11
-Conclusão
-
-O MedVault posiciona a CESS Network no centro da transformação digital da saúde. O projeto demonstra como tecnologias descentralizadas podem garantir privacidade, transparência e segurança, oferecendo um modelo replicável de governança ética para dados médicos.
-
-O sistema reafirma que a privacidade é um direito fundamental e que infraestruturas descentralizadas, como a CESS, são essenciais para protegê-lo.
-
-Referências
-
-(As mesmas listadas na versão em inglês.)
-
-Autora
-
-Karen Beatrice Souza Gonçalves
-Universidade de Brasília (UnB)
+# Autora
+Karen Beatrice Souza Gonçalves  
+Universidade de Brasília (UnB)  
 GitHub: https://github.com/karenbeat
