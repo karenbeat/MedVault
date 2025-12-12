@@ -1,143 +1,62 @@
-🏥 MedVault
+# 🏥 MedVault: Cofre Médico Descentralizado (DApp)
 
-Decentralized Medical Data Vault powered by CESS Network
+**Privacidade em Primeiro Lugar. Controle Total sobre seus Dados Médicos. Potencializado pela CESS Network.**
 
-Privacy-first, decentralized infrastructure for secure medical data storage and controlled sharing.
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-🌐 Overview
+---
 
-MedVault is a fully decentralized application (DApp) designed to give patients full sovereignty over their medical data.
-By combining CESS DeOSS for encrypted off-chain storage with EVM smart contracts for immutable access control, MedVault removes centralized servers, credentials, and trust intermediaries.
+## 🌐 Visão Geral do Projeto
 
-This project positions CESS Network as a trust infrastructure, not merely a storage provider.
+O **MedVault** é uma aplicação descentralizada (DApp) de ponta projetada para resolver o maior desafio da saúde digital: a soberania do paciente sobre seus dados.
 
-🧠 System Architecture
+Ao casar o **Armazenamento Descentralizado Criptografado (DeOSS) da CESS Network** com a segurança de **Smart Contracts EVM**, o MedVault elimina servidores centrais, intermediários de confiança e senhas.
 
-MedVault follows a hybrid decentralized architecture composed of three independent layers:
+Este projeto não apenas utiliza a CESS Network para armazenamento, mas a estabelece como a **infraestrutura de confiança e auditabilidade** necessária para um futuro ético da saúde.
 
-🔹 Front-End (Client-Side)
+### Por que a CESS Network? 🌍
 
-Wallet-based authentication
+O MedVault é a prova de conceito ideal para a CESS porque demonstra:
 
-Client-side cryptography
+* **Camada de Confiança Global:** Uso da CESS como fonte imutável de verdade (Proof-of-Existence) para dados sensíveis.
+* **Caso de Uso de Saúde no Mundo Real:** Solução direta para silos de dados e questões de privacidade médica.
+* **Fundação Ética:** Criação de uma alternativa descentralizada e resiliente para a saúde digital.
 
-Direct interaction with DeOSS and smart contracts
+---
 
-🔹 On-Chain Back-End
+## 🧠 Arquitetura do Sistema: Descentralização Pura
 
-Smart contracts manage:
+O MedVault adota uma arquitetura híbrida descentralizada, eliminando a necessidade de um servidor backend tradicional, confiando inteiramente no cliente e na blockchain.
 
-File ownership
 
-Time-based access permissions
 
-Audit logs and verification
+### 🔹 1. Front-End (Cliente)
+O orquestrador da DApp. Toda a criptografia, autenticação e comunicação direta com a CESS e o Smart Contract ocorrem no lado do cliente.
 
-🔹 Off-Chain Storage
+* **Tecnologias Core:** **Next.js**, **TypeScript**, **Ethers.js**, **MetaMask**, **CESS DeOSS REST API**.
 
-Encrypted medical files stored in CESS DeOSS
+### 🔹 2. Back-End On-Chain (Smart Contract EVM)
+A camada de lógica de negócios e segurança. Gerencia a **identidade** e as **permissões**.
 
-Fragmentation, redundancy, and recovery guarantees
+* **Funções:** `uploadFile`, `grantAccess`, `revokeAccess`, `hasAccess`, `recordAccess`.
+* **Responsabilidade:** Garantir a **propriedade imutável** e as **regras de acesso temporal**.
 
-There is no centralized backend server.
+### 🔹 3. Armazenamento Off-Chain (CESS DeOSS)
+Onde o arquivo médico criptografado reside. A segurança é garantida pela própria rede CESS.
 
-🎨 Front-End Architecture & Functionality
+* **Garantias CESS:** Fragmentação, Redundância Geográfica, Deduplicação e o rigor do **PoDR² (Proof of Data Reduplication and Recovery)**.
 
-The front-end acts as a decentralized orchestrator, connecting users directly to the blockchain and the CESS DeOSS gateway.
+---
 
-Core Technologies
+## 🎨 Funcionalidades do Front-End (Soberania do Paciente)
 
-Next.js (React)
+O Front-End é projetado para ser intuitivo e dar ao paciente o controle total sobre seu histórico médico.
 
-TypeScript
+### 🔐 Autenticação Wallet-Based
+A identidade é o endereço da carteira. Sem senhas, sem contas centralizadas.
+### 📤 Upload Seguro (CESS DeOSS)
+O arquivo é enviado diretamente ao DeOSS.
 
-Ethers.js
-
-MetaMask
-
-CESS DeOSS REST API
-
-Key Features
-🔐 Wallet Authentication
-
-Authentication exclusively via MetaMask
-
-No passwords or centralized accounts
-
-Wallet address defines identity and ownership
-
-📤 File Upload to CESS DeOSS
-
-Files uploaded directly from the browser using REST
-
-Required headers:
-
-Territory
-
-Account
-
-Message
-
-Signature
-
-DeOSS returns a FID (File Identifier)
-
+```bash
 PUT /file
-
-⛓️ On-Chain Metadata Registration
-
-After upload:
-
-A cryptographic hash is generated client-side
-
-The smart contract stores:
-
-fileHash
-
-deossCID (FID)
-
-timestamp
-
-owner address
-
-This guarantees immutability and proof of ownership.
-
-📊 Dashboard & File Management
-
-Lists all files owned by the connected wallet
-
-Metadata fetched directly from the blockchain
-
-Files downloaded directly from DeOSS
-
-🕒 Access Control
-
-Owners grant time-limited access to doctors or institutions
-
-Parameters:
-
-File hash
-
-Recipient wallet address
-
-Expiration timestamp
-
-Permissions enforced on-chain
-
-📜 Audit Logs
-
-UI listens to smart contract events:
-
-FileRegistered
-
-AccessGranted
-
-AccessRevoked
-
-FileAccessed
-
-Provides an immutable access timeline
-
-🔐 Security Principles
-
-No private keys stored
+# Headers obrigatórios: Territory, Account, Message, Signature (garantindo autorização de gateway)
