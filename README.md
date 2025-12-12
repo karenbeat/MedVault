@@ -1,5 +1,3 @@
- MedVault — Decentralized Medical Data Vault  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; line-height: 1.7; max-width: 980px; margin: 40px auto; padding: 0 24px; color: #1f2937; background-color: #ffffff; } h1, h2, h3 { color: #0f172a; } h1 { border-bottom: 3px solid #e5e7eb; padding-bottom: 12px; } h2 { margin-top: 48px; border-bottom: 2px solid #e5e7eb; padding-bottom: 8px; } h3 { margin-top: 32px; } p { margin: 16px 0; } ul { margin-left: 22px; } pre, code { background-color: #f3f4f6; border-radius: 6px; font-family: "Fira Code", monospace; } pre { padding: 16px; overflow-x: auto; } table { width: 100%; border-collapse: collapse; margin: 24px 0; } th, td { border: 1px solid #e5e7eb; padding: 12px; text-align: left; } th { background-color: #f9fafb; } hr { margin: 64px 0; border: none; border-top: 2px solid #e5e7eb; }
-
 # 🏥 MedVault — Decentralized Medical Data Vault
 
 **Privacy-first. Patient-centered. Built with care. Powered by CESS Network.**
