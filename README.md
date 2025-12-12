@@ -1,62 +1,105 @@
-# 🏥 MedVault: Cofre Médico Descentralizado (DApp)
+# 🏥 MedVault — Decentralized Medical Data Vault
 
-**Privacidade em Primeiro Lugar. Controle Total sobre seus Dados Médicos. Potencializado pela CESS Network.**
+**Privacy-first. Complete Control over Medical Data. Powered by CESS Network.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
-## 🌐 Visão Geral do Projeto
+## 🌐 Project Overview
 
-O **MedVault** é uma aplicação descentralizada (DApp) de ponta projetada para resolver o maior desafio da saúde digital: a soberania do paciente sobre seus dados.
+**MedVault** is a cutting-edge **Decentralized Application (DApp)** designed to solve one of the most critical challenges in digital healthcare: **patient sovereignty over medical data**.
 
-Ao casar o **Armazenamento Descentralizado Criptografado (DeOSS) da CESS Network** com a segurança de **Smart Contracts EVM**, o MedVault elimina servidores centrais, intermediários de confiança e senhas.
+By combining **CESS Network’s Encrypted Decentralized Object Storage (DeOSS)** with **EVM-based Smart Contracts**, MedVault removes centralized servers, trust intermediaries, and passwords from the healthcare data lifecycle.
 
-Este projeto não apenas utiliza a CESS Network para armazenamento, mas a estabelece como a **infraestrutura de confiança e auditabilidade** necessária para um futuro ético da saúde.
-
-### Por que a CESS Network? 🌍
-
-O MedVault é a prova de conceito ideal para a CESS porque demonstra:
-
-* **Camada de Confiança Global:** Uso da CESS como fonte imutável de verdade (Proof-of-Existence) para dados sensíveis.
-* **Caso de Uso de Saúde no Mundo Real:** Solução direta para silos de dados e questões de privacidade médica.
-* **Fundação Ética:** Criação de uma alternativa descentralizada e resiliente para a saúde digital.
+This project does not merely *use* CESS Network for storage — it establishes CESS as the **trust, auditability, and integrity layer** required for an ethical and decentralized future in healthcare.
 
 ---
 
-## 🧠 Arquitetura do Sistema: Descentralização Pura
+## 🌍 Why CESS Network?
 
-O MedVault adota uma arquitetura híbrida descentralizada, eliminando a necessidade de um servidor backend tradicional, confiando inteiramente no cliente e na blockchain.
+MedVault is a strong **real-world Proof-of-Concept** for the CESS ecosystem, demonstrating:
 
+- **Global Trust Layer**  
+  Use of CESS as an immutable source of truth via **Proof-of-Existence (PoE)**.
 
+- **Healthcare-Critical Use Case**  
+  Direct solution to data silos, breaches, and lack of patient control.
 
-### 🔹 1. Front-End (Cliente)
-O orquestrador da DApp. Toda a criptografia, autenticação e comunicação direta com a CESS e o Smart Contract ocorrem no lado do cliente.
-
-* **Tecnologias Core:** **Next.js**, **TypeScript**, **Ethers.js**, **MetaMask**, **CESS DeOSS REST API**.
-
-### 🔹 2. Back-End On-Chain (Smart Contract EVM)
-A camada de lógica de negócios e segurança. Gerencia a **identidade** e as **permissões**.
-
-* **Funções:** `uploadFile`, `grantAccess`, `revokeAccess`, `hasAccess`, `recordAccess`.
-* **Responsabilidade:** Garantir a **propriedade imutável** e as **regras de acesso temporal**.
-
-### 🔹 3. Armazenamento Off-Chain (CESS DeOSS)
-Onde o arquivo médico criptografado reside. A segurança é garantida pela própria rede CESS.
-
-* **Garantias CESS:** Fragmentação, Redundância Geográfica, Deduplicação e o rigor do **PoDR² (Proof of Data Reduplication and Recovery)**.
+- **Ethical Infrastructure**  
+  A decentralized, censorship-resistant alternative for sensitive medical data.
 
 ---
 
-## 🎨 Funcionalidades do Front-End (Soberania do Paciente)
+## 🧠 System Architecture — Pure Decentralization
 
-O Front-End é projetado para ser intuitivo e dar ao paciente o controle total sobre seu histórico médico.
+MedVault adopts a **fully decentralized hybrid architecture**, completely eliminating traditional backend servers.
 
-### 🔐 Autenticação Wallet-Based
-A identidade é o endereço da carteira. Sem senhas, sem contas centralizadas.
-### 📤 Upload Seguro (CESS DeOSS)
-O arquivo é enviado diretamente ao DeOSS.
+All logic is distributed between the **client**, the **blockchain**, and **CESS DeOSS**.
+
+### 🔹 1. Front-End (Client-Side)
+
+The DApp orchestrator.  
+All cryptography, authentication, and communication occur **entirely on the client**.
+
+**Technologies**
+- Next.js  
+- TypeScript  
+- Ethers.js  
+- MetaMask  
+- CESS DeOSS REST API  
+
+---
+
+### 🔹 2. On-Chain Back-End (EVM Smart Contract)
+
+The security and business logic layer.
+
+**Core Responsibilities**
+- Identity management
+- Ownership enforcement
+- Time-based access control
+
+**Main Functions**
+- `uploadFile`
+- `grantAccess`
+- `revokeAccess`
+- `hasAccess`
+- `recordAccess`
+
+---
+
+### 🔹 3. Off-Chain Storage (CESS DeOSS)
+
+Encrypted medical files are stored off-chain in **CESS DeOSS**.
+
+**CESS Guarantees**
+- Fragmentation
+- Geo-redundancy
+- Deduplication
+- **PoDR²** (Proof of Data Reduplication and Recovery)
+
+---
+
+## 🎨 Front-End Functionalities (Patient Sovereignty)
+
+The interface is designed with a single principle: **patients own and control their data**.
+
+### 🔐 Wallet-Based Authentication
+- Identity equals wallet address
+- No passwords
+- No centralized accounts
+
+---
+
+### 📤 Secure Upload (CESS DeOSS)
+
+Files are uploaded **directly from the client** to DeOSS.
 
 ```bash
 PUT /file
-# Headers obrigatórios: Territory, Account, Message, Signature (garantindo autorização de gateway)
+# Required headers:
+# Territory
+# Account
+# Message
+# Signature
