@@ -1,4 +1,4 @@
- MedVault — Decentralized Medical Data Vault  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; line-height: 1.6; max-width: 900px; margin: 40px auto; padding: 0 20px; color: #1f2937; background-color: #ffffff; } h1, h2, h3 { color: #111827; } h1 { border-bottom: 3px solid #e5e7eb; padding-bottom: 10px; } h2 { margin-top: 40px; border-bottom: 2px solid #e5e7eb; padding-bottom: 6px; } h3 { margin-top: 30px; } code, pre { background-color: #f3f4f6; border-radius: 6px; font-family: "Fira Code", monospace; } pre { padding: 16px; overflow-x: auto; } code { padding: 2px 6px; } table { width: 100%; border-collapse: collapse; margin: 20px 0; } table th, table td { border: 1px solid #e5e7eb; padding: 10px; text-align: left; } table th { background-color: #f9fafb; } ul { margin-left: 20px; } hr { margin: 50px 0; border: none; border-top: 2px solid #e5e7eb; }
+
 
 # 🏥 MedVault — Decentralized Medical Data Vault
 
