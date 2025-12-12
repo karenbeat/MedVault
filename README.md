@@ -104,9 +104,11 @@ The user interface is designed around a single principle:
 
 ### 📤 Secure Upload to CESS DeOSS
 
+[](https://github.com/karenbeat/MedVault/blob/main/README.md#-secure-upload-to-cess-deoss)
+
 Medical files are uploaded **directly from the browser** to CESS DeOSS.
 
-```bash\
+```
 PUT /file\
 # Required headers:\
 # Territory\
@@ -292,3 +294,5 @@ Autenticação    Conexão da wallet    msg.sender    Assinatura do gatewa
 📄 Licença
 
 Este projeto está licenciado sob a Licença MIT
+
+```
