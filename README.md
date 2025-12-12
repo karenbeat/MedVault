@@ -110,7 +110,7 @@ This project is licensed under the **MIT License**.
 
 - - -
 
-# 🇧🇷 MedVault — Cofre Médico Descentralizado
+# 🇧🇷 MedVault — Cofre de Arquivos Médicos Descentralizados
 
 **Privacidade em primeiro lugar. O paciente no centro. Construído com cuidado. Powered by CESS Network.**
 
