@@ -1,158 +1,143 @@
-project:
-  name: MedVault
-  tagline: Decentralized Medical Data Vault built on CESS Network and EVM-compatible blockchains
-  license: MIT
+🏥 MedVault
 
-overview:
-  description: >
-    MedVault is a fully decentralized application designed to provide secure,
-    auditable, and user-sovereign storage of sensitive medical data.
-    The platform combines CESS DeOSS for encrypted off-chain storage with
-    smart contracts for immutable ownership, access control, and auditability.
-  principles:
-    - No centralized servers
-    - No centralized credentials
-    - Cryptographic ownership and permissions
-    - Transparency by default
+Decentralized Medical Data Vault powered by CESS Network
 
-architecture:
-  model: Hybrid Decentralized Architecture
-  centralized_backend: false
-  components:
-    front_end:
-      description: >
-        Client-side decentralized interface responsible for wallet authentication,
-        encryption, file upload, and smart contract interaction.
-    on_chain_back_end:
-      description: >
-        Smart contracts deployed on an EVM-compatible blockchain manage file
-        ownership, access permissions, and audit logs.
-    off_chain_storage:
-      description: >
-        CESS DeOSS stores encrypted medical files and provides redundancy,
-        integrity verification, and recovery guarantees.
+Privacy-first, decentralized infrastructure for secure medical data storage and controlled sharing.
 
-front_end:
-  role: >
-    Acts as a decentralized orchestrator between the user,
-    the blockchain, and the CESS DeOSS gateway.
-  technologies:
-    - Next.js (React)
-    - TypeScript
-    - Ethers.js
-    - MetaMask
-    - CESS DeOSS REST API
+🌐 Overview
 
-  features:
-    wallet_authentication:
-      description: >
-        Users authenticate exclusively through MetaMask.
-        No passwords, usernames, or centralized identity providers are used.
-      properties:
-        - Wallet address defines ownership
-        - Wallet address defines access permissions
+MedVault is a fully decentralized application (DApp) designed to give patients full sovereignty over their medical data.
+By combining CESS DeOSS for encrypted off-chain storage with EVM smart contracts for immutable access control, MedVault removes centralized servers, credentials, and trust intermediaries.
 
-    file_upload:
-      description: >
-        Files are uploaded directly from the client to a CESS DeOSS gateway
-        using REST APIs.
-      required_headers:
-        - Territory
-        - Account
-        - Message
-        - Signature
-      response:
-        fid: File Identifier returned by DeOSS
+This project positions CESS Network as a trust infrastructure, not merely a storage provider.
 
-    on_chain_registration:
-      description: >
-        After upload, the client computes a cryptographic hash of the file
-        and registers metadata on-chain.
-      stored_metadata:
-        - fileHash
-        - deossCID
-        - timestamp
-        - ownerAddress
+🧠 System Architecture
 
-    dashboard:
-      description: >
-        Displays all files owned by the connected wallet.
-        Metadata is retrieved directly from the blockchain.
-      capabilities:
-        - File listing
-        - Direct download from DeOSS
+MedVault follows a hybrid decentralized architecture composed of three independent layers:
 
-    access_control:
-      description: >
-        File owners can grant time-limited access to third parties
-        such as doctors or institutions.
-      parameters:
-        - fileHash
-        - recipientWallet
-        - expirationTimestamp
+🔹 Front-End (Client-Side)
 
-    audit_logs:
-      description: >
-        The front-end listens to smart contract events
-        and displays an immutable audit trail.
-      events:
-        - FileRegistered
-        - AccessGranted
-        - AccessRevoked
-        - FileAccessed
+Wallet-based authentication
 
-front_end_security:
-  principles:
-    - No private keys stored
-    - All cryptographic operations occur inside MetaMask
-    - Optional client-side encryption (AES / RSA)
-    - Communication restricted to trusted endpoints
+Client-side cryptography
 
-back_end:
-  model: Fully Decentralized
+Direct interaction with DeOSS and smart contracts
 
-  smart_contract:
-    description: >
-      The smart contract defines ownership, permissions, and auditability.
-      It does not store files, only metadata.
-    technologies:
-      - Solidity ^0.8.x
-      - EVM-compatible blockchain (Sepolia Testnet)
-    main_functions:
-      - registerFile(fileHash, fid)
-      - grantAccess(fileHash, user, expiration)
-      - revokeAccess(fileHash, user)
-      - hasAccess(fileHash, user)
-      - getMyFiles()
-      - getFileInfo(fileHash)
+🔹 On-Chain Back-End
 
-  deoss:
-    description: >
-      CESS DeOSS is responsible for encrypted off-chain storage of medical files.
-    capabilities:
-      - Encrypted object storage
-      - Fragmentation and redundancy
-      - Deduplication and recovery
-      - Proof of Existence (PoE)
-      - Proof of Data Reduplication and Recovery (PoDR²)
-    endpoints:
-      upload: PUT /file
-      download: GET /file/download/<fid>
-      metadata: GET /file/metadata/<fid>
-      delete: DELETE /file/<fid>
+Smart contracts manage:
 
-future_improvements:
-  doctor_interface:
-    description: >
-      A dedicated interface for doctors to securely access shared medical data.
-    planned_features:
-      - Doctor-specific dashboard
-      - Read-only access to authorized files
-      - Access expiration indicators
-      - Auditable access history
-      - Integration with CESS Proxy Re-Encryption (PReT)
+File ownership
 
-cess_value_proposition:
-  description: >
-    MedVault demonstrates CESS Network as a global trust infrastructure
-    for sensitive medical data and decentralized healthcare applications.
+Time-based access permissions
+
+Audit logs and verification
+
+🔹 Off-Chain Storage
+
+Encrypted medical files stored in CESS DeOSS
+
+Fragmentation, redundancy, and recovery guarantees
+
+There is no centralized backend server.
+
+🎨 Front-End Architecture & Functionality
+
+The front-end acts as a decentralized orchestrator, connecting users directly to the blockchain and the CESS DeOSS gateway.
+
+Core Technologies
+
+Next.js (React)
+
+TypeScript
+
+Ethers.js
+
+MetaMask
+
+CESS DeOSS REST API
+
+Key Features
+🔐 Wallet Authentication
+
+Authentication exclusively via MetaMask
+
+No passwords or centralized accounts
+
+Wallet address defines identity and ownership
+
+📤 File Upload to CESS DeOSS
+
+Files uploaded directly from the browser using REST
+
+Required headers:
+
+Territory
+
+Account
+
+Message
+
+Signature
+
+DeOSS returns a FID (File Identifier)
+
+PUT /file
+
+⛓️ On-Chain Metadata Registration
+
+After upload:
+
+A cryptographic hash is generated client-side
+
+The smart contract stores:
+
+fileHash
+
+deossCID (FID)
+
+timestamp
+
+owner address
+
+This guarantees immutability and proof of ownership.
+
+📊 Dashboard & File Management
+
+Lists all files owned by the connected wallet
+
+Metadata fetched directly from the blockchain
+
+Files downloaded directly from DeOSS
+
+🕒 Access Control
+
+Owners grant time-limited access to doctors or institutions
+
+Parameters:
+
+File hash
+
+Recipient wallet address
+
+Expiration timestamp
+
+Permissions enforced on-chain
+
+📜 Audit Logs
+
+UI listens to smart contract events:
+
+FileRegistered
+
+AccessGranted
+
+AccessRevoked
+
+FileAccessed
+
+Provides an immutable access timeline
+
+🔐 Security Principles
+
+No private keys stored
